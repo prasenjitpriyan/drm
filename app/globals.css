@@ -1,5 +1,5 @@
 @import 'tailwindcss';
-@import "tw-animate-css";
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -116,5 +116,21 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@media print {
+  button,
+  .no-print {
+    display: none !important;
+  }
+
+  table {
+    font-size: 10pt;
+  }
+
+  body {
+    background: white;
+    color: black;
   }
 }

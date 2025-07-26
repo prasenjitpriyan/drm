@@ -1,9 +1,9 @@
 'use client'
 
+import Link from 'next/link'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { FaHome } from 'react-icons/fa'
-import Link from 'next/link'
 
 interface Office {
   serial: number
