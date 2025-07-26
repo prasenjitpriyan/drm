@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { FaHome } from 'react-icons/fa'
 import Link from 'next/link'
 
@@ -20,11 +21,14 @@ export default function OfficeForm({
 }: OfficeFormProps) {
   const [selectedOffice, setSelectedOffice] = useState('')
   const [selectedAccountOffice, setSelectedAccountOffice] = useState('')
+  const router = useRouter()
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    alert(
-      `Selected Office: ${selectedOffice}\nSelected Account Office: ${selectedAccountOffice}`
+    router.push(
+      `/dashboard?office=${encodeURIComponent(
+        selectedOffice
+      )}&account=${encodeURIComponent(selectedAccountOffice)}`
     )
   }
 
@@ -47,7 +51,7 @@ export default function OfficeForm({
 
         <form
           onSubmit={handleSubmit}
-          className="w-full max-w-md mx-auto space-y-6 rounded-2xl p-8 backdrop-blur-lg bg-white/10 border border-white/10 shadow-xl"
+          className="w-full max-w-3xl mx-auto space-y-6 rounded-2xl p-8 backdrop-blur-lg bg-white/10 border border-white/10 shadow-xl"
         >
           <div>
             <label
