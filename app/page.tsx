@@ -1,74 +1,44 @@
 'use client'
 
-import { useState } from 'react'
-import Header from '@/components/Header'
-import Hero from '@/components/Hero'
-import OfficeForm from '@/components/OfficeForm'
+import React from 'react'
+import { motion } from 'motion/react'
+import Link from 'next/link'
+import { LampContainer } from '@/components/ui/lamp'
 
-interface Office {
-  serial: number
-  name: string
-}
-
-const allOffices: Office[] = [
-  { serial: 1, name: 'Baghajatin' },
-  { serial: 2, name: 'Ballygunge' },
-  { serial: 3, name: 'Ballygunge RS' },
-  { serial: 4, name: 'Ballygunge SC' },
-  { serial: 5, name: 'Baishnab Ghata Patuli Township' },
-  { serial: 6, name: 'Bijoygargh' },
-  { serial: 7, name: 'Bosepukur Road' },
-  { serial: 8, name: 'Dhakuria' },
-  { serial: 9, name: 'Doverlane' },
-  { serial: 10, name: 'East Kolkata Township' },
-  { serial: 11, name: 'Ganguly Bagan' },
-  { serial: 12, name: 'Garcha Road' },
-  { serial: 13, name: 'Garfa' },
-  { serial: 14, name: 'Garia B T' },
-  { serial: 15, name: 'Gariahat Market' },
-  { serial: 16, name: 'Golfgreen' },
-  { serial: 17, name: 'Golpark' },
-  { serial: 18, name: 'Haltu' },
-  { serial: 19, name: 'Jadavgargh' },
-  { serial: 20, name: 'Jadavpur University' },
-  { serial: 21, name: 'Jodhpur Park' },
-  { serial: 22, name: 'K P Roy Lane' },
-  { serial: 23, name: 'Kalikapur' },
-  { serial: 24, name: 'Kasba' },
-  { serial: 25, name: 'Lake Gardens' },
-  { serial: 26, name: 'Lake Market' },
-  { serial: 27, name: 'Madurdaha' },
-  { serial: 28, name: 'Mukundapur' },
-  { serial: 29, name: 'Naktala' },
-  { serial: 30, name: 'Panchasayar' },
-  { serial: 31, name: 'PGH Shah Road' },
-  { serial: 32, name: 'Purbachal Main Road' },
-  { serial: 33, name: 'Rajpur Jorabagan' },
-  { serial: 34, name: 'Ras Behari Avenue' },
-  { serial: 35, name: 'Regent Estate' },
-  { serial: 36, name: 'RK Seva Pratisthan' },
-  { serial: 37, name: 'Sammilani Mahavidyalaya' },
-  { serial: 38, name: 'Santoshpur Avenue' },
-  { serial: 39, name: 'Santoshpur DSO' },
-  { serial: 40, name: 'Sarat Bose Road' },
-  { serial: 41, name: 'Viveknagar' },
-  { serial: 42, name: 'South Kolkata 1st Sub Division' }
-]
-
-const accountOffices = ['Tollygunge', 'Alipore']
-
-export default function Home() {
-  const [showForm, setShowForm] = useState(false)
-
+export default function LampDemo() {
   return (
-    <main className="min-h-screen flex flex-col items-center bg-gray-50 p-6">
-      <Header />
+    <LampContainer>
+      <motion.div
+        initial={{ opacity: 0, y: -24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: 'easeInOut' }}
+        className="mb-4 text-2xl font-bold tracking-widest text-cyan-400"
+      >
+        SKFSD DRM BILL
+      </motion.div>
 
-      {!showForm ? (
-        <Hero onGetStarted={() => setShowForm(true)} />
-      ) : (
-        <OfficeForm allOffices={allOffices} accountOffices={accountOffices} />
-      )}
-    </main>
+      <motion.p
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 0.6, ease: 'easeInOut' }}
+        className="mb-8 max-w-xl text-center text-lg md:text-xl text-slate-200"
+      >
+        Consolidate and manage your DRM bills smoothly for 40 offices across
+        South Kolkata First Sub Division. Click “Get Started” below to begin
+        data selection and entry.
+      </motion.p>
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.4, duration: 0.5 }}
+      >
+        <Link
+          href="/chooseOffice"
+          className="rounded bg-cyan-500 px-6 py-3 font-semibold text-white text-lg hover:bg-cyan-600 shadow-lg transition-all"
+        >
+          Get Started
+        </Link>
+      </motion.div>
+    </LampContainer>
   )
 }

@@ -1,8 +1,7 @@
-interface HeroProps {
-  onGetStarted: () => void
-}
+import Link from 'next/link'
+import React from 'react'
 
-export default function Hero({ onGetStarted }: HeroProps) {
+const Hero = () => {
   return (
     <section className="flex flex-col items-center justify-center flex-grow space-y-6 max-w-3xl text-center px-4">
       <h2 className="text-4xl font-semibold text-gray-800">
@@ -13,12 +12,14 @@ export default function Hero({ onGetStarted }: HeroProps) {
         South Kolkata. Click “Get Started” below to begin data selection and
         entry.
       </p>
-      <button
-        onClick={onGetStarted}
+      <Link
+        href="/ChooseOffice"
         className="px-8 py-3 text-white bg-blue-600 rounded shadow hover:bg-blue-700 transition"
       >
         Get Started
-      </button>
+      </Link>
     </section>
   )
 }
+
+export default Hero
